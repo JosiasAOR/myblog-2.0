@@ -1,0 +1,57 @@
+.nav{
+    background-color: rgb(33, 100, 175);
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.ul{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-emphasis: none;    
+}
+.li{
+    margin-left: 1rem;
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    list-style-type: none;
+    transition: transform 0.3s ease;
+}
+.li {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease; 
+ }
+
+  
+  .li:hover {
+  transform: scale(1.1);
+    color:rgb(163, 163, 163)
+}
+.nav2{
+    display: none;
+}
+.hambu{
+    display:none ;
+   }
+
+@media screen and (max-width: 400px){
+
+    .nav{
+        display: none;
+    }
+    .nav2{
+        display: flex;
+    }
+   .hambu{
+    display: flex;
+    display: flex;
+    font-size: 30px;
+}
+}
+@media screen and (min-width: 400px){
+
+   
+}

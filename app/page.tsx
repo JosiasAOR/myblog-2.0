@@ -1,95 +1,58 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import { useState, useEffect } from 'react';
+import { getDatabase, ref, child, get } from "firebase/database";
+import { initializeApp } from 'firebase/app';
+import { Banner } from './componets/banner/banner';
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+  const [exibir, setExibit] = useState(false)
+  const firebaseConfig = {
+    apiKey: "AIzaSyBgScV6VBQqvQ9clzfayzL_V5RzRdHrAqI",
+    authDomain: "oblogdojo.firebaseapp.com",
+    projectId: "oblogdojo",
+    storageBucket: "oblogdojo.appspot.com",
+    messagingSenderId: "344952979196",
+    appId: "1:344952979196:web:e0c7bedc25712375e1e179"
+  };
+  initializeApp(firebaseConfig);
+  useEffect(() => {
+    carregarPublicacoes();
+  });
+  const [Publicacoes, setPublicacoes] = useState(false)
+  function carregarPublicacoes() {
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `Publicacoes/`))
+      .then((snapshot) => {
+        const mensagens = [];
+        snapshot.forEach((mensagem) => {
+          mensagens.push(mensagem.val());
+        });
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        setPublicacoes(mensagens);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+  const listItens = Publicacoes ? (
+    Publicacoes.map((item) => (
+       <div>
+          <Banner post={item} />
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+       </div>
+    ))
+  ):''
+  return <>
+    <main>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+      <h1>
+        Home Page
+      </h1>
+      <button onClick={() => {
+      }}>Exibir na tela</button>
+      {exibir ? exibir : 'null'},
+      {listItens}
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
     </main>
-  )
+  </>
 }
