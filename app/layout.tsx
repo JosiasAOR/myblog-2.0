@@ -41,7 +41,7 @@ export default function RootLayout({
     const dbRef = ref(getDatabase());
     get(child(dbRef, `Publicacoes/`))
       .then((snapshot) => {
-        const mensagens = [];
+        const mensagens:any = [];
         snapshot.forEach((mensagem) => {
           mensagens.push(mensagem.val());
         });
