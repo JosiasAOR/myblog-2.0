@@ -1,6 +1,6 @@
-import { carregarPublicacoes } from '../getPots';
+import { carregarPublicacoes } from '../services/getPots';
 import { Banner } from '@/app/componets/banner/Banner';
-import { GetPostId } from '../GetPostById';
+import { GetPostId } from '../services/GetPostById';
 
 export async function generateStaticParams() {
   const users = await carregarPublicacoes();

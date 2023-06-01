@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Banner } from '@/app/componets/banner/Banner';
 import Link from 'next/link';
-import { carregarPublicacoes } from './getPots';
+import { carregarPublicacoes } from './services/getPots';
 import styles from './publicacoes.module.css'
 import { adicionarVisualizacao } from './setViewPost';
 
