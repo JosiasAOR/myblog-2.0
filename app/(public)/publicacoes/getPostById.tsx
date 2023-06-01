@@ -12,18 +12,19 @@ import { initializeApp } from 'firebase/app';
 
 initializeApp(firebaseConfig);
 
-export async function getPostId(postId:string) {
+export function getPostId(params: any) {
   const dbRef = ref(getDatabase());
-  const snapshot = await get(child(dbRef, `Publicacoes/${postId}`));
-
-  const mensagens: any=snapshot.val()
-  return mensagens;
-
-  // snapshot.forEach((mensagem) => {
-  //   mensagens.push(mensagem.val());
-  // });
-
+  return get(child(dbRef, `Publicacoes/`)).then((snapshot) => {
+    let post = null;
+    snapshot.forEach((mensagem) => {
+      if (mensagem.val().id == params) {
+        post = mensagem.val();
+      }
+    });
+    return post;
+  });
 }
+
 
   
   

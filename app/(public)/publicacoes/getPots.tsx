@@ -14,7 +14,7 @@ initializeApp(firebaseConfig);
 
 export async function carregarPublicacoes() {
   const dbRef = ref(getDatabase());
-  const snapshot = await get(child(dbRef, `Publicacoes/`));
+  const snapshot = await get(child(dbRef, 'Publicacoes/'));
 
   const mensagens: any[] = [];
   snapshot.forEach((mensagem) => {

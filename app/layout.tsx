@@ -7,6 +7,7 @@ import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import { getDatabase, ref, child, get } from "firebase/database";
 import { initializeApp } from 'firebase/app';
+import SimpleMenu from './componets/banner/menuNav';
 
 
 
@@ -22,6 +23,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  
   const firebaseConfig = {
     apiKey: "AIzaSyBgScV6VBQqvQ9clzfayzL_V5RzRdHrAqI",
     authDomain: "oblogdojo.firebaseapp.com",
@@ -33,7 +35,6 @@ export default function RootLayout({
   useEffect(() => {
     carregarPublicacoes();
   });
-  const [exibirMenu,setExibirMenu]=useState(false)
   const [publicacoes,setPublicacoes]=useState(false)
 
 
@@ -52,13 +53,15 @@ export default function RootLayout({
         console.error(error);
       });
   }
+  
   return (
     <html lang="en">
       <body className={inter.className}>
-      <SlMenu className={styles.hambu} onClick={()=>{setExibirMenu(!exibirMenu)}}/>
 
+      <div className={styles.fixed} >
         <nav className={styles.nav}>
           <ul className={styles.ul}>
+
             <li className={styles.li}> <Link className={styles.link} href="/"> Home</Link></li>
             <li className={styles.li}> <Link href="/publicacoes"> Publicações</Link></li>
             <li className={styles.li}> <Link href="/projetos"> Projetos</Link></li>
@@ -66,19 +69,13 @@ export default function RootLayout({
           </ul>
         </nav>
 
-         { exibirMenu?<nav className={styles.nav2}>
-          <ul className={styles.ul2}>
-            <li className={styles.li2} onClick={()=>{setExibirMenu(!exibirMenu)}}> <Link className={styles.link} href="/"> Home</Link></li>
-            <li className={styles.li2} onClick={()=>{setExibirMenu(!exibirMenu)}}> <Link href="/publicacoes"> Publicações</Link></li>
-            <li className={styles.li2} onClick={()=>{setExibirMenu(!exibirMenu)}}> <Link href="/projetos"> Projetos</Link></li>
-            <li className={styles.li2} onClick={()=>{setExibirMenu(!exibirMenu)}}> <Link href="/sobreMim"> Sobre Mim</Link></li>
-          </ul>
-        </nav>:''}
+      <nav className={styles.nav2}>
+          <SimpleMenu/>
+        </nav>
         
-        
+        </div>
       {children}
         
-      
       
       
       </body>

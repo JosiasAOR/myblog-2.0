@@ -1,13 +1,21 @@
+'use client'
 import styles from "./Banner.module.css";
+
+
+
+
 
 export  const Banner = ({ post }) => (
   <div className={styles.Container}>
+    <div>
+
     <img className={styles.img} src={post.image} />
+    </div>
+
 <div className={styles.tudoJunto}>
 <div className={styles.container3}>
       <h2 className={styles.theme}>
-        {post.id}
-           {/* <br></br>ID:{post.id} */}
+        {post.theme}
       </h2>
       <div className={styles.dataENome}>
       <p className={styles.postPreviewDate}>{post.date}</p>
@@ -16,6 +24,7 @@ export  const Banner = ({ post }) => (
     </div>
     </div>
     <p className={styles.content}>
+      {post.content.substring(0,120)}...
     </p>
 
 </div>
