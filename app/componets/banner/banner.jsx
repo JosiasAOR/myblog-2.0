@@ -10,7 +10,7 @@ export  const Banner = ({ post }) => (
   <div className={styles.Container}>
     <div>
 
-    <Image alt="111" className={styles.img} src={post.image} />
+    <img  className={styles.img} src={post.image} />
     </div>
 
 <div className={styles.tudoJunto}>
