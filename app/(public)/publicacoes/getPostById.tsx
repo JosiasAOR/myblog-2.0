@@ -12,7 +12,7 @@ import { initializeApp } from 'firebase/app';
 
 initializeApp(firebaseConfig);
 
-export function getPostId(params: any) {
+export function GetPostId(params: any) {
   const dbRef = ref(getDatabase());
   return get(child(dbRef, `Publicacoes/`)).then((snapshot) => {
     let post = null;

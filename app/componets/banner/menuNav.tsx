@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -18,7 +19,9 @@ export default function SimpleMenu() {
 
   return (
     <div>
-      <SlMenu style={{width:40,color:'black',height:60,marginLeft:10}} onClick={handleClick}/>
+      <SlMenu style={{width:40,color:'black',height:60,marginLeft:10}} onClick={()=>{
+        handleClose()
+      }}/>
 
       <Menu
         id="simple-menu"

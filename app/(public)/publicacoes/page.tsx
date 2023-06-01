@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
-import { Banner } from '@/app/componets/banner/banner';
+import { Banner } from '@/app/componets/banner/Banner';
 import Link from 'next/link';
 import { carregarPublicacoes } from './getPots';
 import styles from './publicacoes.module.css'
@@ -21,7 +21,7 @@ export default function Publicacoes() {
 
     useEffect(() => {
         fetchPublicacoes();
-    }, []);
+    }, [posts]);
 
     const listItens = posts ? (
         posts.map((item: any) => (

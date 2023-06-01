@@ -1,9 +1,10 @@
 'use client'
+import { GetPostId } from '../GetPostById'
 import { useState, useEffect } from "react";
-import { getDatabase, ref, child, get, refFromURL, set } from "firebase/database";
 import { initializeApp } from "firebase/app";
 import styles from './postDetails.module.css'
-import { getPostId } from "../getPostById";
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyBgScV6VBQqvQ9clzfayzL_V5RzRdHrAqI",
   authDomain: "oblogdojo.firebaseapp.com",
@@ -18,7 +19,7 @@ initializeApp(firebaseConfig);
 
 
 ///////////////////////////////////////
-export default function postDetailsPage({
+export default function PostDetailsPage({
   params,
 }: {
   params: { publicacoesID: string };
@@ -26,7 +27,7 @@ export default function postDetailsPage({
   const [posts, setPosts] = useState<any>(false);
   async function fetchPublicacoes() {
     try {
-      const publicacoes = await getPostId(params.publicacoesID);
+      const publicacoes = await GetPostId(params.publicacoesID);
       console.log('call back', publicacoes)
       return setPosts(publicacoes)
     } catch (error) {
