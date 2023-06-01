@@ -1,16 +1,8 @@
-'use client'
 import styles from "./Banner.module.css";
-import Image from "next/image";
-
-
-
-
 
 export  const Banner = ({ post }) => (
   <div className={styles.Container}>
     <div>
-
-    <img  className={styles.img} src={post.image} />
     </div>
 
 <div className={styles.tudoJunto}>
@@ -31,4 +23,4 @@ export  const Banner = ({ post }) => (
 </div>
     
   </div>
-);
+)

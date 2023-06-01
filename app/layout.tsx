@@ -1,9 +1,6 @@
 import './globals.css'
-import styles from './componets/banner/navegation.module.css'
-import Link from 'next/link';
 import { Inter } from 'next/font/google'
-import NavBar from './componets/banner/NavigationBar';
-
+import NavBar from './componets/navegation/NavigationBar';
 
 
 
