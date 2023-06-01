@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/componets/banner/banner.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/componets/banner/banner.tsx", "app/(public)/publicacoes/[publicacoesID]/Banner.jsx"],
   "exclude": ["node_modules"]
 }

@@ -18,7 +18,10 @@ export default async function PostDetailsPage({
 
   return (
     <>
-     <Banner post={post}/>
+    <div>
+    {post !== null && <Banner post={post} />}
+    </div>
+
     </>
   );
 }
