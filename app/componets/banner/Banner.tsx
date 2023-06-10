@@ -1,17 +1,19 @@
 import React from "react";
 import styles from "./Banner.module.css";
-import { adicionarVisualizacao } from './setViewPost';
+import { adicionarVisualizacao } from "@/app/(public)/publicacoes/setViewPost";
+
+interface Post {
+  id: string;
+  image: string;
+  theme: string;
+  date: string;
+  views: number;
+  category: string;
+  content: string;
+}
 
 interface BannerProps {
-  post: {
-    id: string;
-    image: string;
-    theme: string;
-    date: string;
-    views: number;
-    category: string;
-    content: string;
-  };
+  post: Post;
 }
 
 export const Banner: React.FC<BannerProps> = ({ post }) => (
@@ -30,7 +32,7 @@ export const Banner: React.FC<BannerProps> = ({ post }) => (
       <h2 className={styles.theme}>{post?.theme}</h2>
       <div className={styles.date}>
         <p>{post?.date}</p>
-        <p className={styles.views}>Views: {post?.views}</p>
+        <p className={styles.views}>Visualizações: {post?.views}</p>
         <p className={styles.category}>{post?.category}</p>
       </div>
       <p className={styles.description}>
