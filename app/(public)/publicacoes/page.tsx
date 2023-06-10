@@ -4,7 +4,6 @@ import { Banner } from "@/app/componets/banner/Banner";
 import Link from "next/link";
 import { carregarPublicacoes } from "./services/getPots";
 import styles from "./publicacoes.module.css";
-import { adicionarVisualizacao } from "./setViewPost";
 
 export default function Publicacoes() {
   const [posts, setPosts] = useState<any>(false);

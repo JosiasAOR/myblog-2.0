@@ -1,8 +1,20 @@
 import React from "react";
 import styles from "./Banner.module.css";
-import { adicionarVisualizacao } from "@/app/(public)/publicacoes/setViewPost";
+import { adicionarVisualizacao } from './setViewPost';
 
-export const Banner = ({ post }) => (
+interface BannerProps {
+  post: {
+    id: string;
+    image: string;
+    theme: string;
+    date: string;
+    views: number;
+    category: string;
+    content: string;
+  };
+}
+
+export const Banner: React.FC<BannerProps> = ({ post }) => (
   <div
     onClick={() => {
       adicionarVisualizacao(post?.id);
@@ -27,4 +39,3 @@ export const Banner = ({ post }) => (
     </div>
   </div>
 );
-
