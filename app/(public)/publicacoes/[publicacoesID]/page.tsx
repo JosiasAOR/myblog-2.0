@@ -1,23 +1,22 @@
-import { carregarPublicacoes } from "../services/getPots";
-import { Banner } from "@/app/componets/banner/Banner";
-import { InPost } from "@/app/componets/banner/InPost";
+'use client'
+import { useEffect, useState } from "react";
 import { GetPostId } from "../services/GetPostById";
+import { InPost } from './InPost';
 
-export async function generateStaticParams() {
-  const users = await carregarPublicacoes();
-  const publicacoes = users.map((posts) => ({
-    publicacoesId: posts.id.toString(),
-  }));
-
-  return publicacoes;
-}
-
-export default async function PostDetailsPage({
+export default function PostDetailsPage({
   params,
 }: {
   params: { publicacoesID: string };
 }) {
-  const post = await GetPostId(params.publicacoesID);
+  const [post, setPost] = useState(null);
 
-  return <>{post !== null && <InPost post={post} />}</>;
+  useEffect(() => {
+    async function fetchPost() {
+      const post = await GetPostId(params.publicacoesID);
+      setPost(post);
+    }
+    fetchPost();
+  }, [params.publicacoesID]);
+
+  return <>{post && <InPost post={post} />}</>;
 }

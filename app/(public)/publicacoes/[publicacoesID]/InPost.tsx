@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import styles from './InPost.module.css'
 
 interface BannerProps {
@@ -10,6 +12,8 @@ interface BannerProps {
     views: string
   };
 }
+
+
 
 export const InPost = ({ post }: BannerProps) => (
   <div className={styles.Container}>

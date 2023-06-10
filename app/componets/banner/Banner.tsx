@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Banner.module.css";
-import { adicionarVisualizacao } from "@/app/(public)/publicacoes/setViewPost";
+import { adicionarVisualizacao } from "./setViewPost";
 
 interface Post {
   id: string;
