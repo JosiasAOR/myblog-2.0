@@ -1,0 +1,37 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 55px;
+}
+
+.img {
+  width: 300px;
+}
+.tudoJunto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container3 {
+}
+.theme {
+}
+.daImg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.dataENome {
+}
+.postPreviewDate {
+}
+
+.content {
+  max-width: 800px;
+  padding: 10px;
+}

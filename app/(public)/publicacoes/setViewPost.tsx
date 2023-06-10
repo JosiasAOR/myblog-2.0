@@ -13,15 +13,16 @@ import { initializeApp } from 'firebase/app';
 initializeApp(firebaseConfig);
 
 export async function adicionarVisualizacao(postId: string) {
-  const dbRef = ref(getDatabase());
+  const db = getDatabase();
+  const dbRef = ref(db);
   const postRef = child(dbRef, `Publicacoes/${postId}`);
   const snapshot = await get(postRef);
   const post = snapshot.val();
-  console.log('ssssss',post)
+
   if (post) {
-    const novasVisualizacoes = (post.visualizacoes || 0) + 1;
+    const novasVisualizacoes = (Number(post.views) || 0) + 1;
     update(postRef, {
-      visualizacoes: novasVisualizacoes,
+      views: novasVisualizacoes
     });
   }
 }

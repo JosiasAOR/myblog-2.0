@@ -1,11 +1,17 @@
 .nav {
-    background-color: rgb(95, 96, 97);
+    background-color: rgb(66, 66, 66);
     height: 55px;
     display: flex;
     flex-direction: row;
     justify-content: start;
     position: relative;
     z-index: 100;
+    border-bottom: 3px solid rgb(175, 114, 0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; 
     
 
 }
@@ -36,12 +42,13 @@
     position: relative;
     overflow: hidden;
     transition: transform 0.3s ease;
+    color: rgb(212, 211, 211);
 }
 
 
 .li:hover {
     transform: scale(1.1);
-    color: rgb(163, 163, 163)
+    color: rgb(158, 108, 0)
 }
 
 .nav2 {

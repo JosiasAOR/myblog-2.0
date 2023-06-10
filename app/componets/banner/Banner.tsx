@@ -1,30 +1,30 @@
+import React from "react";
 import styles from "./Banner.module.css";
+import { adicionarVisualizacao } from "@/app/(public)/publicacoes/setViewPost";
 
-interface BannerProps {
-  post?: {
-    theme: string;
-    date: string;
-    category: string;
-    content: string;
-  };
-}
+export const Banner = ({ post }) => (
+  <div
+    onClick={() => {
+      adicionarVisualizacao(post?.id);
+    }}
+    className={styles.container}
+  >
+    <div
+      className={styles.image}
+      style={{ backgroundImage: `url(${post?.image})` }}
+    ></div>
 
-export const Banner = ({ post }: BannerProps) => (
-  <div className={styles.Container}>
-    <div></div>
-
-    <div className={styles.tudoJunto}>
-      <div className={styles.container3}>
-        <h2 className={styles.theme}>{post?.theme}</h2>
-        <div className={styles.dataENome}>
-          <p className={styles.postPreviewDate}>{post?.date}</p>
-
-          <p className={styles.postPreviewCategory}>{post?.category}</p>
-        </div>
+    <div className={styles.content}>
+      <h2 className={styles.theme}>{post?.theme}</h2>
+      <div className={styles.date}>
+        <p>{post?.date}</p>
+        <p className={styles.views}>Views: {post?.views}</p>
+        <p className={styles.category}>{post?.category}</p>
       </div>
-      <p className={styles.content}>
+      <p className={styles.description}>
         {post?.content?.substring(0, 120)}...
       </p>
     </div>
   </div>
 );
+
