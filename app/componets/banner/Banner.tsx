@@ -17,6 +17,8 @@ interface BannerProps {
 }
 
 export const Banner: React.FC<BannerProps> = ({ post }) => (
+  <main style={{margin:10}}>
+
   <div
     onClick={() => {
       adicionarVisualizacao(post?.id);
@@ -40,4 +42,6 @@ export const Banner: React.FC<BannerProps> = ({ post }) => (
       </p>
     </div>
   </div>
+  </main>
+
 );
